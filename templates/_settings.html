@@ -1,0 +1,20 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    label: "Storage Path"|t,
+    id: 'storage_path',
+    name: 'storage_path',
+    instructions: "Absolute path to PDF folder location. Ex: ~/craft/public/assets/pdfs"|t,
+    value: settings.storage_path,
+    errors: settings.getErrors('storage_path')
+}) }}
+
+{{ forms.textField({
+    label: "Base URL"|t,
+    id: 'base_url',
+    name: 'base_url',
+    instructions: "Public URL to PDF folder. Ex: http://craft.dev/pdfs/ or /assets/documents"|t,
+    value: settings.base_url,
+    errors: settings.getErrors('base_url')
+}) }}
+
