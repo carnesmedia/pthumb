@@ -75,7 +75,7 @@ class PThumb_AssetService extends BaseApplicationComponent {
   }
 
   private function url() {
-    $base_url = $this->slashify($this->settings->base_url);
+    $base_url = craft()->config->parseEnvironmentString($this->slashify($this->settings->base_url));
     return $base_url . $this->cache_folder . $this->thumbnail_filename();
   }
 
@@ -84,7 +84,9 @@ class PThumb_AssetService extends BaseApplicationComponent {
   }
 
   private function storage_path() {
-    return $this->slashify($this->settings->storage_path);
+    $storage_path = craft()->config->parseEnvironmentString($this->settings->storage_path);
+
+    return $this->slashify($storage_path);
   }
 
   private function cache_storage_path() {
